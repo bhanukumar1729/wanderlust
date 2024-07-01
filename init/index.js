@@ -19,7 +19,7 @@ const initDB= async ()=>{
     await Filter.deleteMany({});
    await Filter.insertMany(initData.data1)
     await listing.insertMany(initData.data)
-
+    console.log(initDB.data)
     console.log('data intialized')
 }
 initDB();
