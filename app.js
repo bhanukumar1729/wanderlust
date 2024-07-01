@@ -88,6 +88,10 @@ app.use((req,res,next)=>{
 })
 
 app.use("/",listingRoute)
+<<<<<<< HEAD
+=======
+
+>>>>>>> cf68f1ddc3583c3d6fbecbdafb2c9f73aa9c497c
 app.use('/admin/',userRoute)
 
 app.use('/listings',listingRoute)
