@@ -1,0 +1,63 @@
+<% layout('/layouts/boilerplate') -%>
+
+    <body>
+        <br><br>
+        <h1 class="offset-5">Create new!</h1>
+        <form action="/listings" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+            <div class="row">
+                <div class="col-8 offset-2">
+                    <div class="title mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" placeholder="Give a cachy title" name="listing[title]" required>
+                        <div class="valid-feedback">Title looks good!</div>
+                        <div class="invalid-feedback">Enter title please!</div>
+                    </div>
+
+                    <div class="description mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea type="text" class="form-control" name="listing[description]" required></textarea>
+                        <div class="valid-feedback">Description is vaild!</div>
+                        <div class="invalid-feedback">Enter Description please!</div>
+                    </div>
+
+                    <div class="price mb-3">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="number" class="form-control" placeholder="1000" name="listing[price]" required>
+                        <div class="valid-feedback">price entered!</div>
+                        <div class="invalid-feedback">Enter price please!</div>
+                    </div>
+                    <h3>Choose destination features</h3><br>
+                    <div class="filters-btn mb-3">
+                    <% for( type of filtersList.splice(1)) { %>
+                            <div class="form-check form-switch ">
+                                <input class="checkbox"  type="checkbox" name="listing[filters]"  value="<%=type.name%>" id="flexCheckChecked<%=type.name%>">
+                                <label class="form-check-label" for="flexCheckChecked<%=type.name%>"><%=type.name%></label>
+                          </div>
+                        <% } %>
+                        
+                </div>
+                    <div class="img mb-3">
+                        <label for="image" class="form-label">Upload Image</label>
+                        <input type="file" class="form-control" placeholder="image"
+                            name="listing[image]" required>
+                    </div>
+                    <div class="row">
+                        <div class="location mb-3 col-md-4">
+                            <label for="location" class="form-label">Location</label>
+                            <input type="text" class="form-control" placeholder="Andhra pradesh" required
+                                name="listing[location]">
+                                <div class="valid-feedback">location entered!</div>
+                                <div class="invalid-feedback">Enter location please!</div>
+                        </div>
+                        <div class="country mb-3 col-md-4">
+                            <label for="country" class="form-label">Country</label>
+                            <input type="text" class="form-control" placeholder="India" name="listing[country]" required>
+                            <div class="invalid-feedback">Enter Country name please!</div>
+                            </div>
+                    </div>
+                    <button class="btn btn-dark add-btn">Add</button>
+                </div>
+            </div>
+        </form>
+        <br><br><br>
+    </body>
