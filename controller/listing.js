@@ -18,8 +18,8 @@ module.exports.show=async (req, res) => {
     let { id } = req.params;
     const list = await Listing.findById(id).populate({path:"review",populate:{path:"author"}}).populate("owner");
     if(!list){
-        req.flash("error","Listing not found")
-        return res.redirect("/listings");
+        req.flash("error","distination not found")
+        return res.redirect("/");
     }
     list.trending+=1;
     await list.save()
@@ -36,9 +36,9 @@ module.exports.create=async (req, res) => {
         url,fileName
     }
     await newListing.save();
-    req.flash("success","Listing added successfully!")
+    req.flash("success","Destination added successfully!")
     // res.send(req.body)
-    res.redirect('/listings');
+    res.redirect('/');
 }
 
 module.exports.getEdit=async (req, res) => {
@@ -46,8 +46,8 @@ module.exports.getEdit=async (req, res) => {
     let listing = await Listing.findById(id);
     const filtersList=await Filter.find({});
     if(!listing){
-        req.flash("error","Listing not found")
-        return res.redirect("/listings");
+        req.flash("error","Destination not found")
+        return res.redirect("/");
     }
     res.render("./listings/edit.ejs", { listing ,filtersList})
 }
@@ -61,14 +61,14 @@ module.exports.edit=async (req, res) => {
     listing.image={url,fileName}
     await listing.save()
     }
-    req.flash("updated","Listing updated")
-    res.redirect(`/listings/${id}`);
+    req.flash("updated","Destination updated")
+    res.redirect(`/${id}`);
 }
 module.exports.delete=async (req, res) => {
     let { id } = req.params;
     await Listing.findByIdAndDelete(id);
-    req.flash("deleted","Listing deleted")
-    res.redirect(`/listings`);
+    req.flash("deleted","Destination deleted")
+    res.redirect(`/`);
 }
 module.exports.renderFilter=async(req,res)=>{
     const {filter}=req.params;
@@ -89,7 +89,7 @@ module.exports.deselect=(req,res,next)=>{
     const {filter}=req.params;
 if(pastFilter === filter){
     pastFilter=''
-   res.redirect("/listings")
+   res.redirect("/")
 }
 else{
     pastFilter=filter
@@ -101,9 +101,9 @@ const text=req.body.search;
 if(text!=""){
 let filter="search";
 const filtersList=await Filter.find({});
-let allListings=await Listing.find({$or:[{title:{$regex:text}},{description:{$regex:text}}]})
+let allListings=await Listing.find({$or:[{title:{$regex:text}},{description:{$regex:text}},{country:{$regex:text}},{location:{$regex:text}}]})
 res.render("./listings/index.ejs",{allListings ,filter,filtersList})
 }else{
-    res.redirect("/listings")
+    res.redirect("/")
 }
 }

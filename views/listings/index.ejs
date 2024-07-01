@@ -2,7 +2,7 @@
 <body>
   <div class="filters mb-3">
 <% for( type of filtersList ) { %>
-    <a href="/listings/filters/<%= type.name %>" class="filter <%=filter === type.name ? 'selected' : '' %>">
+    <a href="/filters/<%= type.name %>" class="filter <%=filter === type.name ? 'selected' : '' %>">
       <div><i class="<%= type.url %>"></i></div>
       <div><%=type.name%></div>
     </a>
@@ -16,7 +16,7 @@
     <div class="row row-cols-lg-3 row-cols-m-2 row-cols-sm-1 mt-3">
       <% if (allListings.length) { %>
         <% for( let list of allListings ) { %>
-        <a href="/listings/<%= list._id %> " class="listing-link">
+        <a href="/<%= list._id %> " class="listing-link">
           <div class="card col listing-card" >
               <img src="<%= list.image.url %>" class="card-img-top" alt="listing image" style="height: 22rem;">
               <div class="card-img-overlay">hi</div>
@@ -33,7 +33,7 @@
     <% }else{ %>
     <div class="notFound ms-auto me-auto" >
       <h1>No Destinations Found </h1>
-<a href="/listings/new" > Add new</a>
+<a href="/new" > Add new</a>
     
     </div>
       <% } %>

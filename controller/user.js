@@ -17,7 +17,7 @@ module.exports.signup=async(req,res)=>{
             return next(err);
         }else{
             req.flash("success","Welcome to wanderlust");
-            res.redirect("/listings");
+            res.redirect("/");
         } 
        })
     }catch(e){
@@ -32,7 +32,7 @@ module.exports.renderLogin=(req,res)=>{
 
 module.exports.login=(req,res)=>{
     req.flash("success",'Welcome to Wanderlust')
-    let url=res.locals.redirectUrl || "/listings";
+    let url=res.locals.redirectUrl || "/";
     res.redirect(url)
 }
 
@@ -42,7 +42,7 @@ module.exports.logout=(req,res,next)=>{
             return next(err);
         }else{
             req.flash("success","You have successfully logged out")
-            res.redirect("/listings");
+            res.redirect("/");
         } 
        })
 }

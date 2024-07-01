@@ -7,7 +7,7 @@ module.exports.renderNew=async(req, res) => {
     let listing=await Listing.findById(req.params.id)
     if(!listing){
         req.flash("error","Listing not found")
-       return res.redirect("/listings");
+       return res.redirect("/");
     }
     res.render("./listings/review.ejs", {id,filter})
 }
@@ -20,7 +20,7 @@ module.exports.createNew=async (req, res) => {
     await newReview.save();
     await listing.save();
     req.flash("success","Review Created")
-    res.redirect(`/listings/${req.params.id}`)
+    res.redirect(`/${req.params.id}`)
   }
 
   module.exports.destroyreview=async(req,res)=>{
@@ -28,5 +28,5 @@ module.exports.createNew=async (req, res) => {
     await Listing.findByIdAndUpdate(id,{$pull:{review:reviewId}})
     await Review.findByIdAndDelete(reviewId)
     req.flash("deleted","review deleted")
-    res.redirect(`/listings/${id}`)
+    res.redirect(`/${id}`)
   }

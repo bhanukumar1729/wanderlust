@@ -25,8 +25,8 @@
         </div>
         <% if (currUser._id.equals(list.owner._id)) { %>
             <div class="btns" style="display:flex">
-                <a href="/listings/<%= list._id%>/edit" class="btn btn-dark offset-2">EDIT</a>
-                <form action="/listings/<%=list._id %>?_method=DELETE" method="post">
+                <a href="/<%= list._id%>/edit" class="btn btn-dark offset-2">EDIT</a>
+                <form action="/<%=list._id %>?_method=DELETE" method="post">
                     <button class="btn btn-dark offset-2">DELETE!</button>
                 </form>
             </div>
@@ -40,7 +40,7 @@
             <% } %>
 
             <div class="mt-3 mb-4">
-                <form action="/listings/<%= list._id %>/review">
+                <form action="/<%= list._id %>/review">
                     <button class="btn btn-dark offset-2"> 
                     Write a review <i class="fa-regular fa-star fa-rotate-90" style="color: #FFF;"></i>
                     </button></form>
@@ -53,7 +53,7 @@
                 <h2>@<%= review.author.username %></h2>
                 <p ><%=review.comment%></p>
                 <p class="starability-result" data-rating=<%= review.rating %>></p>
-               <div style="display: inline-block;"> <form action="/listings/<%=list._id%>/review/<%=review._id%>?_method=DELETE" method="post">
+               <div style="display: inline-block;"> <form action="/<%=list._id%>/review/<%=review._id%>?_method=DELETE" method="post">
                 <button class="btn offset-2"> 
                     <i class="fa-regular fa-trash-can" style="color: #ff0000;"></i>
                 </button></form></div>
