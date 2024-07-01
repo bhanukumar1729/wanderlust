@@ -4,6 +4,10 @@ const review=require("./review.js");
 const { string } = require("joi");
 
 const listingSchema=new schema({
+    _id:{
+        type:schema.Types.ObjectId,
+        ref:"Listing"
+    },
     title:{
         type:String,
         required:true
