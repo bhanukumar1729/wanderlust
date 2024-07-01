@@ -8,7 +8,7 @@ module.exports.isLogin=(req,res,next)=>{
     if(!req.isAuthenticated()){
         req.session.redirectUrl=req.originalUrl;
         req.flash("error","Login required")
-        return res.redirect("/login")
+        return res.redirect("/admin/login")
     }
         next();
 }

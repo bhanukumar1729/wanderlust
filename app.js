@@ -88,7 +88,6 @@ app.use((req,res,next)=>{
 })
 
 app.use("/",listingRoute)
-})
 app.use('/admin/',userRoute)
 
 app.use('/listings',listingRoute)
