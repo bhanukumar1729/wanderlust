@@ -87,7 +87,7 @@ app.use((req,res,next)=>{
     next();
 })
 
-app.use("/",()=>{
+app.use("/",(req,res)=>{
     res.redirect("/listings")
 })
 app.use('/admin/',userRoute)
