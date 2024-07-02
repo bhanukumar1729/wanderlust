@@ -63,7 +63,9 @@ a{
     border:2px solid rgba(0, 0, 0, 0.267);
    
 }
-
+.price2{
+    color: #fe424d;
+}
 
 /* navbar */
 .navbar{
@@ -87,6 +89,14 @@ a{
 .nav-link{
     background-color: #fff !important;
 }
+.show .nav-link{
+    border-radius: 0px;
+    border: 0px;
+}
+.show .nav-link:hover{
+    color: #fe424d;
+}
+
 /* Footer */
 .f-info-links a{
     text-decoration: none;
