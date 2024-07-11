@@ -8,7 +8,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.config.js --mode development"
+    "build": "npm i"
   },
   "keywords": [],
   "author": "Boyinedi Bhanu kumar",
