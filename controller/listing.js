@@ -27,8 +27,8 @@ module.exports.show=async (req, res) => {
 }
 
 module.exports.create=async (req, res) => {
-    let url=req.file.path;
-    let fileName=req.file.filename;
+    let url=req.file.path || req.file.secure_url;
+    let fileName=req.file.filename || req.file.public_id
     const newListing = new Listing(req.body.listing);
     newListing.owner=req.user.id;
     newListing.trending=0;
@@ -106,4 +106,11 @@ res.render("./listings/index.ejs",{allListings ,filter,filtersList})
 }else{
     res.redirect("/")
 }
+}
+
+module.exports.getPrivacy=async(req,res)=>{
+    res.render("./listings/privacy.ejs")
+}
+module.exports.getTerms=async(req,res)=>{
+res.render("./listings/terms.ejs")
 }

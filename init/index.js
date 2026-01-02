@@ -1,3 +1,4 @@
+require("dotenv").config({ path: "../.env" });
 const mongoose=require("mongoose");
 const listing=require("../models/listing.js");
 const Filter=require("../models/utils.js")
@@ -14,7 +15,7 @@ main().then(()=>{
 const initDB= async ()=>{
     await listing.deleteMany({});
     initData.data=initData.data.map((obj)=>
-        ({...obj,owner:"667c089dcf12b83a5e69afb8"})
+        ({...obj,owner:"69576545b8810c47238d5474"})
     )
     await Filter.deleteMany({});
    await Filter.insertMany(initData.data1)

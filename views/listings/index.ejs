@@ -7,10 +7,12 @@
       <div><%=type.name%></div>
     </a>
 <% } %>
-<div class=" tax form-check form-switch form-check-reverse">
+<% if (allListings.length) { %>
+ <div class=" tax form-check form-switch form-check-reverse">
   <input class="form-check-input" type="checkbox" id="flexSwitchCheckReverse">
   <label class="form-check-label tax-toggle-lable" for="flexSwitchCheckReverse">Include tax</label>
 </div>
+<% } %>
 </div>
       
     <div class="row row-cols-lg-3 row-cols-m-2 row-cols-sm-1 mt-3">

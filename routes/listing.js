@@ -13,7 +13,8 @@ router.route("/")
 
 router.get("/new", isLogin,listingController.getNew)
 router.get("/:id/edit",isLogin,isOwner, wrapAsync(listingController.getEdit))
-
+router.get("/privacy",wrapAsync(listingController.getPrivacy))
+router.get("/terms",wrapAsync(listingController.getTerms))
 router.get("/filters/:filter",listingController.deselect,listingController.renderFilter)
 
 router.route("/:id")
